@@ -147,7 +147,7 @@ function Footer() {
                   style={{ color: theme.palette.primary.main, marginRight: "0.5rem" }}
                 />
                 <StyledText className="text-xs md:text-sm lg:text-lg">
-                  info@qtohouse.com
+                  info@qtohouse.com.pk
                 </StyledText>
               </motion.div>
               <motion.div
@@ -159,7 +159,7 @@ function Footer() {
                   style={{ color: theme.palette.primary.main, marginRight: "0.5rem" }}
                 />
                 <StyledText className="text-xs md:text-sm lg:text-lg">
-                  (571)-748-4366
+                  (0341) 7861985 
                 </StyledText>
               </motion.div>
             </div>
