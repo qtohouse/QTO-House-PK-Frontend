@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import AppRouter from './routes/AppRouter';
+import Theme from './theme';
+import { useState, useEffect } from 'react';
+import { darkTheme, lightTheme } from './theme';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Initialize isDarkMode from localStorage, default to true if not set
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('isDarkMode');
+    return savedTheme ? JSON.parse(savedTheme) : true;
+  });
+
+  // Save the theme preference to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
+  const appliedTheme = isDarkMode ? darkTheme : lightTheme;
+
+  console.log('Applied Theme:', appliedTheme); // Debug the theme object
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Theme theme={appliedTheme}>
+      <AppRouter toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+    </Theme>
+  );
 }
 
-export default App
+export default App;
