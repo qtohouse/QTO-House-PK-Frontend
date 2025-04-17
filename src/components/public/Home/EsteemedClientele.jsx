@@ -106,22 +106,10 @@ function EsteemedClientele() {
     },
   ];
 
-  // Determine section background based on theme mode
-  const sectionBackground = theme.palette.mode === "dark"
-    ? theme.palette.background.default
-    : `linear-gradient(to bottom, ${theme.palette.primary.main}20, ${theme.palette.primary.main}CC)`;
-
-  // Determine text color based on theme mode for better contrast with the background
-  const sectionTextColor = theme.palette.mode === "dark" 
-    ? theme.palette.text.primary 
-    : theme.palette.primary.contrastText;
-
   return (
     <motion.section
       className="animate-on-scroll py-16 md:py-24 overflow-hidden"
-      style={{
-        background: sectionBackground
-      }}
+      style={{ backgroundColor: theme.palette.background.default }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
@@ -134,13 +122,13 @@ function EsteemedClientele() {
           variants={titleVariants}
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4"
-              style={{ color: sectionTextColor }}>
+              style={{ color: theme.palette.text.primary }}>
             Our Esteemed Clientele
           </h2>
           <div className="w-24 h-1 mx-auto mb-6"
-               style={{ backgroundColor: sectionTextColor }}></div>
+               style={{ backgroundColor: theme.palette.primary.main }}></div>
           <p className="text-base md:text-lg leading-relaxed"
-             style={{ color: sectionTextColor }}>
+             style={{ color: theme.palette.text.secondary }}>
             QTO House proudly serves a diverse range of clients in the construction industry, from general contractors to homeowners, ensuring each project is treated with unparalleled professionalism.
           </p>
         </motion.div>
@@ -154,7 +142,7 @@ function EsteemedClientele() {
               key={client.id}
               className="rounded-xl shadow-lg overflow-hidden transform transition-all duration-300"
               style={{ 
-                backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.95)",
+                backgroundColor: theme.palette.background.paper,
                 backdropFilter: "blur(5px)"
               }}
               custom={index}
@@ -171,9 +159,7 @@ function EsteemedClientele() {
                   <div className="flex-shrink-0 mr-3">
                     <div className="w-12 h-12 rounded-full flex items-center justify-center"
                          style={{ 
-                           backgroundColor: theme.palette.mode === "dark" 
-                             ? "rgba(255, 255, 255, 0.2)" 
-                             : `rgba(${theme.palette.primary.main}, 0.1)`
+                           backgroundColor: theme.palette.primary.main + "20"
                          }}>
                       {React.cloneElement(client.icon, { 
                         style: { 
@@ -196,7 +182,7 @@ function EsteemedClientele() {
         <motion.div
           className="mt-16 rounded-xl p-8 shadow-lg max-w-4xl mx-auto"
           style={{
-            backgroundColor: theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.3)" : "rgba(255, 255, 255, 0.98)",
+            backgroundColor: theme.palette.background.paper,
             backdropFilter: "blur(5px)"
           }}
           initial={{ opacity: 0, y: 30 }}

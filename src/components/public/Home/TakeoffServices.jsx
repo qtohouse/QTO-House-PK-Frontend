@@ -26,7 +26,6 @@ import utilitiesImg from "../../../assets/utilities-DF28iGbL (1).avif";
 import roofingImg from "../../../assets/Roofing-Dyn9r6NE.avif";
 import demolitionImg from "../../../assets/Demolition-BziyAGjL.avif";
 
-// Service categories organized by type
 const serviceCategories = [
   {
     id: "commercial",
@@ -78,7 +77,6 @@ const serviceCategories = [
   },
 ];
 
-// Additional specialized services
 const specializedServices = [
   { id: 7, name: "Flooring", imgSrc: flooringImg, description: "All flooring types and finishes" },
   { id: 10, name: "Furnishings", imgSrc: furnishingsImg, description: "Fixed and movable furnishings" },
@@ -118,9 +116,7 @@ function TakeoffServices() {
     <motion.section
       ref={sectionRef}
       className="py-16 md:py-24 relative overflow-hidden"
-      style={{
-        background: `linear-gradient(to bottom right, ${theme.palette.background.default}, ${theme.palette.background.paper})`
-      }}
+      style={{ backgroundColor: theme.palette.background.default }}
       id="services-section"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -162,7 +158,7 @@ function TakeoffServices() {
               className={`relative px-6 py-3 rounded-full text-base md:text-lg font-semibold transition-all duration-300 flex items-center gap-2 shadow-md`}
               style={{
                 backgroundColor: activeCategory === category.id ? theme.palette.primary.main : theme.palette.background.paper,
-                color: activeCategory === category.id ? theme.palette.text.primary : theme.palette.text.primary,
+                color: activeCategory === category.id ? theme.palette.primary.contrastText : theme.palette.text.primary,
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -170,7 +166,7 @@ function TakeoffServices() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * index + 0.3 }}
             >
-              <span style={{ color: activeCategory === category.id ? theme.palette.text.primary : theme.palette.primary.main }}>
+              <span style={{ color: activeCategory === category.id ? theme.palette.primary.contrastText : theme.palette.primary.main }}>
                 {category.icon}
               </span>
               <span>{category.name}</span>
@@ -192,9 +188,7 @@ function TakeoffServices() {
                 <div className="lg:col-span-2">
                   <motion.div
                     className="rounded-2xl shadow-lg p-8 h-full flex flex-col"
-                    style={{
-                      background: `linear-gradient(to bottom right, ${theme.palette.background.paper}, ${theme.palette.background.default})`
-                    }}
+                    style={{ backgroundColor: theme.palette.background.paper }}
                     initial={{ x: -30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.2, duration: 0.5 }}
@@ -269,7 +263,7 @@ function TakeoffServices() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
                             <div className="absolute bottom-0 left-0 right-0 p-4">
-                              <h3 className="text-white font-bold text-xl">{service.name}</h3>
+                              <h3 className="font-bold text-xl" style={{ color: "white" }}>{service.name}</h3>
                               <div className="w-8 h-1 my-2 transform origin-left transition-all duration-300 group-hover:w-12"
                                    style={{ backgroundColor: theme.palette.primary.main }}></div>
                             </div>
@@ -298,10 +292,10 @@ function TakeoffServices() {
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center mr-4`}
                       style={{
-                        backgroundColor: category.id === activeCategory ? theme.palette.primary.main : theme.palette.text.secondary
+                        backgroundColor: category.id === activeCategory ? theme.palette.primary.main : theme.palette.background.paper
                       }}
                     >
-                      <span style={{ color: category.id === activeCategory ? theme.palette.text.primary : theme.palette.background.paper }}>
+                      <span style={{ color: category.id === activeCategory ? theme.palette.primary.contrastText : theme.palette.primary.main }}>
                         {category.icon}
                       </span>
                     </div>
@@ -346,11 +340,11 @@ function TakeoffServices() {
         >
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-grow"
-                 style={{ backgroundColor: theme.palette.text.secondary }}></div>
+                 style={{ backgroundColor: theme.palette.divider }}></div>
             <h3 className="text-2xl md:text-3xl font-bold px-6"
                 style={{ color: theme.palette.text.primary }}>Specialized Services</h3>
             <div className="h-px flex-grow"
-                 style={{ backgroundColor: theme.palette.text.secondary }}></div>
+                 style={{ backgroundColor: theme.palette.divider }}></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -390,8 +384,8 @@ function TakeoffServices() {
                     >
                       <div className="w-12 h-1 mb-3"
                            style={{ backgroundColor: theme.palette.primary.main }}></div>
-                      <h3 className="text-white font-bold text-xl mb-2">{service.name}</h3>
-                      <p className="text-gray-200 text-base">{service.description}</p>
+                      <h3 className="font-bold text-xl" style={{ color: "white" }}>{service.name}</h3>
+                      <p style={{ color: "gray" }}>{service.description}</p>
                     </motion.div>
                   </div>
                 </motion.div>

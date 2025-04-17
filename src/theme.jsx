@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 
+
 // Define the dark theme
 export const darkTheme = createTheme({
   palette: {
@@ -13,12 +14,12 @@ export const darkTheme = createTheme({
       main: '#9CA3AF', // Lighter gray from the buildings
     },
     background: {
-      default: '#1C2526', // Dark background from the logo
-      paper: '#2D3748', // Slightly lighter dark shade for paper elements
+      default: '#1C2526', // Dark background from the logo and sections
+      paper: '#2D3748', // Slightly lighter dark shade for cards and paper elements
     },
     text: {
       primary: '#FFFFFF', // White for text to contrast with dark background
-      secondary: '#9CA3AF', // Lighter gray for secondary text
+      secondary: '#D1D5DB', // Adjusted to match the light gray in the sections
     },
   },
   typography: {
@@ -38,24 +39,24 @@ export const darkTheme = createTheme({
   },
 });
 
-// Define the light theme
+// Define the light theme (unchanged)
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#FBBF24', // Yellow from the logo roofs
-      contrastText: '#1C2526', // Dark color for text on primary background
+      main: '#FBBF24',
+      contrastText: '#1C2526',
     },
     secondary: {
-      main: '#4B5563', // Darker gray for better contrast
+      main: '#4B5563',
     },
     background: {
-      default: '#FFFFFF', // White background for light mode
-      paper: '#F3F4F6', // Very light gray for paper elements
+      default: '#FFFFFF',
+      paper: '#F3F4F6',
     },
     text: {
-      primary: '#1C2526', // Dark color from the logo for text
-      secondary: '#4B5563', // Darker gray for better contrast
+      primary: '#1C2526',
+      secondary: '#4B5563',
     },
   },
   typography: {
@@ -75,6 +76,7 @@ export const lightTheme = createTheme({
   },
 });
 
+// Theme component (unchanged)
 const Theme = ({ children, theme }) => {
   if (!theme) {
     console.error('Theme prop is undefined. Defaulting to darkTheme.');
