@@ -275,7 +275,7 @@ function Process() {
                       <div className="flex items-center justify-center w-6 sm:w-8 h-6 sm:h-8 rounded-full text-sm sm:text-base font-bold"
                            style={{
                              backgroundColor: theme.palette.secondary.main,
-                             color: theme.palette.primary.contrastText
+                             color: 'white'
                            }}>
                         {flow.id}
                       </div>

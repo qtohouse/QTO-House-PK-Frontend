@@ -86,7 +86,7 @@ const Header = ({ toggleTheme, isDarkMode }) => {
                 display: 'flex',
                 alignItems: 'center',
                 '& img': {
-                  height: { xs: 35, sm: 45, md: 55 },
+                  height: { xs: 35, sm: 55, md: 75 },
                   transition: 'height 0.5s ease, transform 0.5s ease',
                   '&:hover': {
                     transform: 'scale(1.15) rotate(5deg)',
