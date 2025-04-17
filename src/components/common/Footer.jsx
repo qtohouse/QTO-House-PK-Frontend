@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 import logo from "../../assets/logo.svg";
 import {
   Instagram,
@@ -9,8 +9,8 @@ import {
   Email,
   Phone,
 } from "@mui/icons-material";
-import { useTheme } from "@mui/material/styles"; // Import useTheme for accessing theme
-import { styled } from "@mui/material/styles"; // Import styled for custom styling
+import { useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
 // Animation variants for the footer container
 const footerVariants = {
@@ -21,7 +21,7 @@ const footerVariants = {
     transition: {
       duration: 0.8,
       ease: "easeOut",
-      staggerChildren: 0.2, // Stagger the children animations
+      staggerChildren: 0.2,
     },
   },
 };
@@ -47,41 +47,59 @@ const hoverVariants = {
 // Styled components to apply theme-based styles
 const StyledFooter = styled("footer")(({ theme }) => ({
   width: "100%",
-  backgroundColor: theme.palette.background.default, // Use theme background
-  color: theme.palette.text.primary, // Use theme text color
+  backgroundColor: theme.palette.background.default,
+  color: theme.palette.text.primary,
   padding: "3rem 2rem",
+  position: "relative",
+  borderTop: `2px solid ${theme.palette.primary.main}`, // Match Header's border
+  boxShadow: theme.palette.mode === "dark"
+    ? "0 -8px 20px rgba(255, 255, 255, 0.1)"
+    : "0 -8px 20px rgba(0, 0, 0, 0.1)",
+  "&:before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: theme.palette.mode === "dark"
+      ? `radial-gradient(circle at 50% 100%, ${theme.palette.primary.main}20, transparent)`
+      : `radial-gradient(circle at 50% 100%, ${theme.palette.primary.main}10, transparent)`,
+    zIndex: 0,
+    pointerEvents: "none",
+  },
 }));
 
 const StyledLink = styled(Link)(({ theme }) => ({
-  color: theme.palette.text.primary, // Use theme text color
+  color: theme.palette.text.primary,
   "&:hover": {
-    color: theme.palette.primary.main, // Use theme primary color on hover
+    color: theme.palette.primary.main,
   },
 }));
 
 const StyledIcon = styled("a")(({ theme }) => ({
-  color: theme.palette.text.secondary, // Use theme secondary text color
+  color: theme.palette.text.secondary,
   "&:hover": {
-    color: theme.palette.primary.main, // Use theme primary color on hover
+    color: theme.palette.primary.main,
   },
 }));
 
 const StyledText = styled("p")(({ theme }) => ({
-  color: theme.palette.text.secondary, // Use theme secondary text color
+  color: theme.palette.text.secondary,
 }));
 
 function Footer() {
-  const theme = useTheme(); // Access the current theme
+  const theme = useTheme();
 
   return (
     <StyledFooter
       as={motion.footer}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }} // Trigger animation when 20% of the footer is in view
+      viewport={{ once: true, amount: 0.2 }}
       variants={footerVariants}
     >
-      <div className="max-w-[90%] mx-auto px-4 md:px-8">
+      <div className="max-w-[90%] mx-auto px-4 md:px-8" style={{ position: "relative", zIndex: 1 }}>
         <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 items-center">
           {/* Logo and Company Info */}
           <motion.div
@@ -90,9 +108,9 @@ function Footer() {
           >
             <motion.img
               src={logo}
-              alt="logo"
+              alt="QTO House Logo"
               className="w-[70px] sm:w-[80px] md:w-[90px] lg:w-[100px]"
-              whileHover={{ scale: 1.05 }} // Subtle scale on hover
+              whileHover={{ scale: 1.05, rotate: 5 }}
               transition={{ duration: 0.3 }}
             />
             <div>
@@ -114,7 +132,7 @@ function Footer() {
           >
             <h1
               className="text-sm md:text-xl lg:text-2xl font-semibold"
-              style={{ color: theme.palette.primary.main }} // Use theme primary color
+              style={{ color: theme.palette.primary.main }}
             >
               Contact Us
             </h1>
@@ -154,7 +172,7 @@ function Footer() {
           >
             <h1
               className="text-sm md:text-xl lg:text-2xl font-semibold"
-              style={{ color: theme.palette.primary.main }} // Use theme primary color
+              style={{ color: theme.palette.primary.main }}
             >
               Follow Us
             </h1>
@@ -196,7 +214,7 @@ function Footer() {
           >
             <h1
               className="text-sm md:text-xl lg:text-2xl font-semibold"
-              style={{ color: theme.palette.primary.main }} // Use theme primary color
+              style={{ color: theme.palette.primary.main }}
             >
               Quick Links
             </h1>
@@ -219,7 +237,7 @@ function Footer() {
         {/* Bottom Section */}
         <motion.div
           className="mt-8 pt-4"
-          style={{ borderTop: `1px solid ${theme.palette.divider}` }} // Use theme divider color
+          style={{ borderTop: `1px solid ${theme.palette.divider}` }}
           variants={sectionVariants}
         >
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
